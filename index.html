@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेरी वेबसाइट - Chrome में खोलें</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header {
+            background: linear-gradient(to right, #4285f4, #34a853);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .browser-check {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #4285f4;
+        }
+
+        .browser-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .chrome-icon {
+            background: #4285f4;
+            color: white;
+        }
+
+        .other-icon {
+            background: #ea4335;
+            color: white;
+        }
+
+        .status-text h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .status-text p {
+            color: #666;
+        }
+
+        .redirect-box {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .redirect-box h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .redirect-box p {
+            color: #856404;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .countdown {
+            font-size: 48px;
+            color: #4285f4;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .website-link {
+            display: block;
+            background: #f1f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-decoration: none;
+            color: #0366d6;
+            border: 2px dashed #0366d6;
+            word-break: break-all;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .website-link:hover {
+            background: #0366d6;
+            color: white;
+            border-color: #0366d6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 18px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4285f4, #34a853);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(66, 133, 244, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f1f1f1;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-3px);
+        }
+
+        .instructions {
+            background: #e8f5e9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 5px solid #34a853;
+        }
+
+        .instructions h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                min-width: 100%;
+            }
+            
+            .countdown {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌐</div>
+            <h1>मेरी प्रोजेक्ट वेबसाइट</h1>
+            <p>Google Chrome में सबसे अच्छा अनुभव प्राप्त करें</p>
+        </div>
+        
+        <div class="content">
+            <div class="browser-check">
+                <div class="browser-status">
+                    <div class="status-icon chrome-icon" id="browserIcon">✅</div>
+                    <div class="status-text">
+                        <h3 id="browserName">ब्राउज़र जाँच की जा रही है...</h3>
+                        <p id="browserMessage">आपका ब्राउज़र डिटेक्ट किया जा रहा है</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="redirect-box">
+                <h3>🚀 स्वचालित रीडायरेक्ट</h3>
+                <p>आपको स्वतः ही निम्नलिखित वेबसाइट पर Chrome में रीडायरेक्ट किया जाएगा:</p>
+                
+                <a href="https://deepakkumar12345678.github.io/my-projects-/" 
+                   target="_blank" 
+                   class="website-link">
+                   https://deepakkumar12345678.github.io/my-projects-/
+                </a>
+                
+                <p>रीडायरेक्ट हो रहा है: <span class="countdown" id="countdown">5</span> सेकंड में</p>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="redirectNow()" class="btn btn-primary">
+                    <span>🚀 अभी Chrome में खोलें</span>
+                </button>
+                <button onclick="cancelRedirect()" class="btn btn-secondary">
+                    <span>❌ रीडायरेक्ट रद्द करें</span>
+                </button>
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 Chrome क्यों जरूरी है?</h3>
+                <ol>
+                    <li>मेरी वेबसाइट के सभी फीचर्स Chrome में बेहतर काम करते हैं</li>
+                    <li>तेज गति और बेहतर परफॉर्मेंस</li>
+                    <li>आधुनिक वेब तकनीकों का पूरा सपोर्ट</li>
+                    <li>बेहतर सुरक्षा और स्थिरता</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 मेरी प्रोजेक्ट्स वेबसाइट | केवल Google Chrome के लिए ऑप्टिमाइज्ड</p>
+            <p id="debugInfo" style="font-size: 12px; margin-top: 10px; color: #999;"></p>
+        </div>
+    </div>
+
+    <script>
+        // Browser Detection Function
+        function detectBrowser() {
+            const userAgent = navigator.userAgent;
+            let browserName = "अज्ञात ब्राउज़र";
+            let isChrome = false;
+            
+            // Chrome Detection (including Chromium-based Edge)
+            if (/Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor)) {
+                browserName = "Google Chrome 🎉";
+                isChrome = true;
+            } else if (/Edg/.test(userAgent)) {
+                browserName = "Microsoft Edge (Chromium) ✅";
+                isChrome = true; // Edge is Chromium-based
+            } else if (/Firefox/.test(userAgent)) {
+                browserName = "Mozilla Firefox";
+            } else if (/Safari/.test(userAgent)) {
+                browserName = "Apple Safari";
+            } else if (/OPR/.test(userAgent) || /Opera/.test(userAgent)) {
+                browserName = "Opera";
+            } else if (/MSIE|Trident/.test(userAgent)) {
+                browserName = "Internet Explorer";
+            }
+            
+            return { browserName, isChrome };
+        }
+        
+        // Update browser info on page
+        function updateBrowserInfo() {
+            const { browserName, isChrome } = detectBrowser();
+            const browserIcon = document.getElementById('browserIcon');
+            const browserNameElement = document.getElementById('browserName');
+            const browserMessage = document.getElementById('browserMessage');
+            const debugInfo = document.getElementById('debugInfo');
+            
+            browserNameElement.textContent = browserName;
+            
+            if (isChrome) {
+                browserIcon.innerHTML = "✅";
+                browserIcon.className = "status-icon chrome-icon";
+                browserMessage.textContent = "आप सही ब्राउज़र का उपयोग कर रहे हैं!";
+                browserMessage.style.color = "#34a853";
+            } else {
+                browserIcon.innerHTML = "⚠️";
+                browserIcon.className = "status-icon other-icon";
+                browserMessage.textContent = "कृपया बेहतर अनुभव के लिए Chrome का उपयोग करें";
+                browserMessage.style.color = "#ea4335";
+            }
+            
+            // Debug info
+            debugInfo.textContent = `User Agent: ${navigator.userAgent.substring(0, 100)}...`;
+        }
+        
+        // Countdown and redirect function
+        let countdownValue = 5;
+        let countdownInterval;
+        let redirectCancelled = false;
+        
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const { isChrome } = detectBrowser();
+            
+            // If already in Chrome, don't redirect
+            if (isChrome) {
+                countdownElement.textContent = "0";
+                countdownElement.style.color = "#34a853";
+                countdownElement.parentElement.innerHTML = 
+                    "<p style='color:#34a853; font-weight:bold;'>✅ आप पहले से ही Chrome/Chromium ब्राउज़र का उपयोग कर रहे हैं!</p>";
+                return;
+            }
+            
+            countdownInterval = setInterval(() => {
+                if (countdownValue > 0 && !redirectCancelled) {
+                    countdownElement.textContent = countdownValue;
+                    countdownValue--;
+                    
+                    // Change color when 2 seconds left
+                    if (countdownValue <= 2) {
+                        countdownElement.style.color = "#ea4335";
+                        countdownElement.style.animation = "pulse 1s infinite";
+                    }
+                } else if (!redirectCancelled) {
+                    clearInterval(countdownInterval);
+                    redirectNow();
+                }
+            }, 1000);
+        }
+        
+        // Immediate redirect function
+        function redirectNow() {
+            redirectCancelled = true;
+            clearInterval(countdownInterval);
+            
+            // Create a Chrome-specific URL that might trigger Chrome opening
+            const targetUrl = "https://deepakkumar12345678.github.io/my-projects-/";
+            
+            // Try multiple methods to open in Chrome
+            try {
+                // Method 1: Direct redirect
+                window.location.href = targetUrl;
+                
+                // Method 2: Open in new tab (as fallback)
+                setTimeout(() => {
+                    window.open(targetUrl, '_blank');
+                }, 100);
+                
+                // Method 3: Show message if redirect fails
+                setTimeout(() => {
+                    document.querySelector('.redirect-box').innerHTML = `
+                        <h3>📲 मैन्युअल रूप से खोलें</h3>
+                        <p>स्वचालित रीडायरेक्ट काम नहीं कर रहा है। कृपया नीचे दिए गए लिंक पर क्लिक करें:</p>
+                        <a href="${targetUrl}" target="_blank" class="website-link">
+                            ${targetUrl}
+                        </a>
+                        <p style="margin-top: 15px; color: #666;">
+                            या Chrome ब्राउज़र में ऊपर दिए गए URL को कॉपी-पेस्ट करें
+                        </p>
+                    `;
+                }, 2000);
+                
+            } catch (error) {
+                console.error("Redirect error:", error);
+            }
+        }
+        
+        // Cancel redirect function
+        function cancelRedirect() {
+            redirectCancelled = true;
+            clearInterval(countdownInterval);
+            
+            document.querySelector('.redirect-box').innerHTML = `
+                <h3>⏸️ रीडायरेक्ट रद्द किया गया</h3>
+                <p>आपने स्वचालित रीडायरेक्ट रद्द कर दिया है।</p>
+                <p>यदि आप मेरी वेबसाइट देखना चाहते हैं, तो नीचे दिए गए लिंक पर क्लिक करें:</p>
+                <a href="https://deepakkumar12345678.github.io/my-projects-/" 
+                   target="_blank" 
+                   class="website-link">
+                   https://deepakkumar12345678.github.io/my-projects-/
+                </a>
+                <p style="margin-top: 15px;">
+                    <button onclick="redirectNow()" style="background:#4285f4;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;">
+                        फिर से रीडायरेक्ट करें
+                    </button>
+                </p>
+            `;
+            
+            document.getElementById('countdown').style.display = 'none';
+        }
+        
+        // Add pulse animation for countdown
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize when page loads
+        window.onload = function() {
+            updateBrowserInfo();
+            startCountdown();
+            
+            // Store in localStorage that user visited this page
+            localStorage.setItem('chromeRedirectVisited', new Date().toISOString());
+            
+            // Check if user has Chrome installed
+            if (navigator.userAgent.includes('Chrome')) {
+                console.log("User has Chrome/Chromium browser");
+            }
+        };
+        
+        // Add beforeunload event to warn user
+        window.addEventListener('beforeunload', function(e) {
+            if (!redirectCancelled) {
+                const confirmationMessage = "क्या आप वाकई इस पेज को छोड़ना चाहते हैं? आपको Chrome में रीडायरेक्ट किया जा रहा है।";
+                e.returnValue = confirmationMessage;
+                return confirmationMessage;
+            }
+        });
+    </script>
+</body>
+</html>
